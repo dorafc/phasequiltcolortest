@@ -39,6 +39,8 @@ function drawSquare(startX, startY, background, size){
   let draw = `M${startX} ${startY} l${size} 0 l0 ${size} l${-size} 0Z`
   path.setAttribute("d", draw)
 
+  path.setAttribute("style", "stroke-width:.25; stroke:#000")
+
   return path
 }
 
@@ -66,6 +68,8 @@ function drawTriangle(startX, startY, background, color, size, rotate){
     triangleGroup.setAttribute("transform", `rotate(${rotate} ${size/2 + startX} ${size/2 + startY})`)
   }
 
+  triangleGroup.setAttribute("style", "stroke-width:.25; stroke:#000")
+
   return triangleGroup
 }
 
@@ -92,6 +96,8 @@ function drawCurve(startX, startY, background, color, size, rotate){
   if (rotate !== 0){
     curveGroup.setAttribute("transform", `rotate(${rotate} ${size/2 + startX} ${size/2 + startY})`)
   }
+
+  curveGroup.setAttribute("style", "stroke-width:.25; stroke:#000")
 
   return curveGroup
 }
