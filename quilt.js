@@ -61,10 +61,40 @@ function drawTriangle(startX, startY, background, color, size, rotate){
   triangleGroup.appendChild(pathBG)
   triangleGroup.appendChild(pathColor)
 
+  // rotate the block
+  if (rotate !== 0){
+    triangleGroup.setAttribute("transform", `rotate(${rotate} ${size/2 + startX} ${size/2 + startY})`)
+  }
+
   return triangleGroup
 }
 
 // draw curved block
+function drawCurve(startX, startY, background, color, size, rotate){
+  let curveGroup = document.createElementNS("http://www.w3.org/2000/svg", "g")
+
+  let pathBG = document.createElementNS("http://www.w3.org/2000/svg", "path")
+  pathBG.setAttribute("fill", background)
+
+  let drawBG = `M${startX} ${startY} l${size} 0 a${-size} ${size} 0 0 0 ${-size} ${size}Z`
+  pathBG.setAttribute("d", drawBG)
+
+  let pathColor = document.createElementNS("http://www.w3.org/2000/svg", "path")
+  pathColor.setAttribute("fill", color)
+
+  let drawColor = `M${startX+size} ${startY} a${-size} ${size} 0 0 0 ${-size} ${size} l${size} 0Z`
+  pathColor.setAttribute("d", drawColor)
+
+  curveGroup.appendChild(pathBG)
+  curveGroup.appendChild(pathColor)
+
+  // rotate the block
+  if (rotate !== 0){
+    curveGroup.setAttribute("transform", `rotate(${rotate} ${size/2 + startX} ${size/2 + startY})`)
+  }
+
+  return curveGroup
+}
 
 // draw circle block
 
@@ -77,4 +107,5 @@ function drawTriangle(startX, startY, background, color, size, rotate){
 // MAKE QUILT
 quiltSVG = insertQuiltSVG("quilt", quilt, dimensions)
 quiltSVG.appendChild(drawSquare(0, 0, background, dimensions.block))
-quiltSVG.appendChild(drawTriangle(dimensions.block, 0, background, gradient[0], dimensions.block))
+quiltSVG.appendChild(drawTriangle(dimensions.block, 0, background, gradient[0], dimensions.block, 0))
+quiltSVG.appendChild(drawCurve(dimensions.block*2, 0, background, gradient[0], dimensions.block, 0))
