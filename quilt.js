@@ -103,8 +103,26 @@ function drawCurve(startX, startY, background, color, size, rotate){
 }
 
 // draw circle block
+function drawCircle(startX, startY, background, color, size){
+  let halfSize = size/2
+  let block = document.createElementNS("http://www.w3.org/2000/svg", "g")
+  block.appendChild(drawCurve(startX, startY, background, color, halfSize, 0))
+  block.appendChild(drawCurve(startX+halfSize, startY, background, color, halfSize, 90))
+  block.appendChild(drawCurve(startX+halfSize, startY+halfSize, background, color, halfSize, 180))
+  block.appendChild(drawCurve(startX, startY+halfSize, background, color, halfSize, 270))
+  return block
+}
 
 // draw semi circle block
+function drawSemiCircle(startX, startY, background, color, size, rotate){
+  let halfSize = size/2
+  let block = document.createElementNS("http://www.w3.org/2000/svg", "g")
+  block.appendChild(drawCurve(startX, startY, background, color[0], halfSize, 0))
+  block.appendChild(drawCurve(startX+halfSize, startY, background, color[0], halfSize, 90))
+  block.appendChild(drawCurve(startX+halfSize, startY+halfSize, background, color[1], halfSize, 90))
+  block.appendChild(drawCurve(startX, startY+halfSize, background, color[1], halfSize, 0))
+  return block
+}
 
 // draw 3x3 triangles
 
@@ -115,3 +133,5 @@ quiltSVG = insertQuiltSVG("quilt", quilt, dimensions)
 quiltSVG.appendChild(drawSquare(0, 0, background, dimensions.block))
 quiltSVG.appendChild(drawTriangle(dimensions.block, 0, background, gradient[0], dimensions.block, 0))
 quiltSVG.appendChild(drawCurve(dimensions.block*2, 0, background, gradient[0], dimensions.block, 0))
+quiltSVG.appendChild(drawCircle(dimensions.block*3, 0, background, gradient[0], dimensions.block))
+quiltSVG.appendChild(drawSemiCircle(dimensions.block*4, 0, background, gradient.slice(0,2), dimensions.block, 0))
