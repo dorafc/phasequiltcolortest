@@ -2,9 +2,25 @@
 const plum = "#906678"
 const greys = ["#BEC2C5", "#A9AEB2", "#939A9F", "#7D868C", "#697277", "#565D61", "#43494C", "#303436"]
 const rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "black"]
+const viridis = ['#440154',
+'#46327e',
+'#365c8d',
+'#277f8e',
+'#1fa187',
+'#4ac16d',
+'#a0da39',
+'#fde725']
+
+// const background = "#111"
+// const gradient = viridis.reverse()
 
 const background = plum
 const gradient = greys
+
+const twoTriColors = [gradient[7], gradient[5]]
+const threeTriColors = [gradient[7], gradient[6], gradient[5], gradient[4], gradient[2]]
+const semiColors = [gradient[3], gradient[1]]
+const circleColor = gradient[0]
 
 // dimensions
 const size = 100;
@@ -171,31 +187,31 @@ function drawTwoTriangles(startX, startY, background, color, size, rotate){
 quiltSVG = insertQuiltSVG("quilt", quilt, size)
 quiltSVG.appendChild(drawSquare(0, 0, background, size))
 quiltSVG.appendChild(drawSquare(size, 0, background, size))
-quiltSVG.appendChild(drawTwoTriangles(size*2, 0, background, gradient.slice(5,7).reverse(), size, 0))
+quiltSVG.appendChild(drawTwoTriangles(size*2, 0, background, twoTriColors, size, 0))
 quiltSVG.appendChild(drawSquare(size*3, 0, background, size))
 quiltSVG.appendChild(drawSquare(size*4, 0, background, size))
 
 quiltSVG.appendChild(drawSquare(0, size, background, size))
-quiltSVG.appendChild(drawThreeTriangles(size, size, background, gradient.slice(1,6).reverse(), size, 0))
-quiltSVG.appendChild(drawSemiCircle(size*2, size, background, gradient.slice(1,3).reverse(), size, 0))
-quiltSVG.appendChild(drawThreeTriangles(size*3, size, background, gradient.slice(1,6).reverse(), size, 90))
+quiltSVG.appendChild(drawThreeTriangles(size, size, background, threeTriColors, size, 0))
+quiltSVG.appendChild(drawSemiCircle(size*2, size, background, semiColors, size, 0))
+quiltSVG.appendChild(drawThreeTriangles(size*3, size, background, threeTriColors, size, 90))
 quiltSVG.appendChild(drawSquare(size*4, size, background, size))
 
-quiltSVG.appendChild(drawTwoTriangles(0, size*2, background, gradient.slice(5,7).reverse(), size, 270))
-quiltSVG.appendChild(drawSemiCircle(size, size*2, background, gradient.slice(1,3).reverse(), size, 270))
-quiltSVG.appendChild(drawCircle(size*2, size*2, background, gradient[0], size))
-quiltSVG.appendChild(drawSemiCircle(size*3, size*2, background, gradient.slice(1,3).reverse(), size, 90))
-quiltSVG.appendChild(drawTwoTriangles(size*4, size*2, background, gradient.slice(5,7).reverse(), size, 90))
+quiltSVG.appendChild(drawTwoTriangles(0, size*2, background, twoTriColors, size, 270))
+quiltSVG.appendChild(drawSemiCircle(size, size*2, background, semiColors, size, 270))
+quiltSVG.appendChild(drawCircle(size*2, size*2, background, circleColor, size))
+quiltSVG.appendChild(drawSemiCircle(size*3, size*2, background, semiColors, size, 90))
+quiltSVG.appendChild(drawTwoTriangles(size*4, size*2, background, twoTriColors, size, 90))
 
 quiltSVG.appendChild(drawSquare(0, size*3, background, size))
-quiltSVG.appendChild(drawThreeTriangles(size, size*3, background, gradient.slice(1,6).reverse(), size, 270))
-quiltSVG.appendChild(drawSemiCircle(size*2, size*3, background, gradient.slice(1,3).reverse(), size, 180))
-quiltSVG.appendChild(drawThreeTriangles(size*3, size*3, background, gradient.slice(1,6).reverse(), size, 180))
+quiltSVG.appendChild(drawThreeTriangles(size, size*3, background,threeTriColors, size, 270))
+quiltSVG.appendChild(drawSemiCircle(size*2, size*3, background, semiColors, size, 180))
+quiltSVG.appendChild(drawThreeTriangles(size*3, size*3, background, threeTriColors, size, 180))
 quiltSVG.appendChild(drawSquare(size*4, size*3, background, size))
 
 quiltSVG.appendChild(drawSquare(0, size*4, background, size))
 quiltSVG.appendChild(drawSquare(size, size*4, background, size))
-quiltSVG.appendChild(drawTwoTriangles(size*2, size*4, background, gradient.slice(5,7).reverse(), size, 180))
+quiltSVG.appendChild(drawTwoTriangles(size*2, size*4, background, twoTriColors, size, 180))
 quiltSVG.appendChild(drawSquare(size*3, size*4, background, size))
 quiltSVG.appendChild(drawSquare(size*4, size*4, background, size))
 
