@@ -1,5 +1,5 @@
 // color pallette
-const plum = "#906678"
+const plum = "#9c7b97"
 const greys = ["#BEC2C5", "#A9AEB2", "#939A9F", "#7D868C", "#697277", "#565D61", "#43494C", "#303436"]
 const rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "black"]
 const viridis = ['#440154',
